@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shantiniketan Adarsh Vidyalaya (S.A.V.) | Raxaul</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #0071e3;
+            --primary-glow: rgba(0, 113, 227, 0.4);
+            --accent: #5e5ce6;
+            --accent-glow: rgba(94, 92, 230, 0.35);
+            --bg-glass: rgba(255, 255, 255, 0.65);
+            --bg-glass-hover: rgba(255, 255, 255, 0.85);
+            --border-glass: rgba(255, 255, 255, 0.8);
+            --text-dark: #1d1d1f;
+            --text-muted: #86868b;
+            --shadow-ios: 0 20px 40px rgba(0, 0, 0, 0.06);
+            --radius-ios: 28px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #f2f2f7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- iOS Floating Animated Bubbles Background --- */
+        .ios-bubbles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+            animation: floatBubble 20s infinite ease-in-out alternate;
+        }
+
+        .bubble-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #0071e3, #5e5ce6);
+            top: -100px;
+            left: -100px;
+            animation-duration: 18s;
+        }
+
+        .bubble-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff3b30, #ff9500);
+            bottom: 10%;
+            right: -100px;
+            animation-duration: 22s;
+        }
+
+        .bubble-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #34c759, #30b0c7);
+            top: 45%;
+            left: 30%;
+            animation-duration: 25s;
+        }
+
+        .bubble-4 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #af52de, #5856d6);
+            bottom: -50px;
+            left: 10%;
+            animation-duration: 19s;
+        }
+
+        @keyframes floatBubble {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(80px, 60px) scale(1.15); }
+            100% { transform: translate(-60px, 100px) scale(0.9); }
+        }
+
+        /* --- Glass Navigation --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1240px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            border-radius: 980px;
+            padding: 12px 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-badge {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .logo-text h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-ios-glow {
+            background: linear-gradient(135deg, #0071e3, #47a0ff);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 980px;
+            font-weight: 700 !important;
+            box-shadow: 0 6px 20px var(--primary-glow);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-ios-glow:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 10px 28px var(--primary-glow);
+        }
+
+        /* --- Announcement Ticker --- */
+        .ticker-bar {
+            margin-top: 110px;
+            max-width: 1240px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .ticker-inner {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            border: 1px solid var(--border-glass);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .ticker-badge {
+            background: #ff3b30;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 980px;
+            white-space: nowrap;
+            margin-right: 16px;
+        }
+
+        .ticker-text {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 60px 24px 80px;
+            max-width: 1240px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 8px 20px;
+            border-radius: 980px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #d97706;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.08;
+            margin-bottom: 22px;
+            background: linear-gradient(180deg, #1d1d1f 20%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto 38px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Stats Glass Cards --- */
+        .stats-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            max-width: 1240px;
+            margin: 20px auto 100px;
+            padding: 0 24px;
+        }
+
+        .glass-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-ios);
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-ios);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: var(--bg-glass-hover);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .stat-num {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            line-height: 1;
+        }
+
+        .stat-lbl {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* --- Section Header --- */
+        .sec-head {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            padding: 0 24px;
+        }
+
+        .sec-tag {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .sec-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        /* --- Interactive Categories Grid --- */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1240px;
+            margin: 0 auto 120px;
+            padding: 0 24px;
+        }
+
+        .cat-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-ios);
+            padding: 36px;
+            box-shadow: var(--shadow-ios);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+        }
+
+        .cat-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: rgba(0, 113, 227, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        /* --- Classes Interactive Interactive Grid --- */
+        .classes-container {
+            max-width: 1240px;
+            margin: 0 auto 120px;
+            padding: 0 24px;
+        }
+
+        .classes-scroll-pills {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            scrollbar-width: none;
+        }
+
+        .class-pill {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .class-pill.active, .class-pill:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        /* --- Admission & Contact --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1240px;
+            margin: 0 auto 120px;
+            padding: 0 24px;
+        }
+
+        .form-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-ios);
+            padding: 44px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .input-ios {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(242, 242, 247, 0.7);
+            font-size: 1rem;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-ios:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: rgba(29, 29, 31, 0.95);
+            backdrop-filter: blur(20px);
+            color: #f5f5f7;
+            padding: 80px 24px 40px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+
+        .footer-content {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- iOS Dynamic Animated Bubbles Background -->
+    <div class="ios-bubbles-container">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+    </div>
+
+    <!-- Glass Floating Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-badge">SAV</div>
+                <div class="logo-text">
+                    <h1>Shantiniketan Adarsh Vidyalaya</h1>
+                    <span>RAXAUL · EAST CHAMPARAN</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#notices">Notices</a></li>
+                <li><a href="#admissions" class="btn-ios-glow"><i data-lucide="sparkles" size="16"></i> Apply 2026-27</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Announcement Bar -->
+    <div class="ticker-bar">
+        <div class="ticker-inner">
+            <span class="ticker-badge">UPDATES</span>
+            <div class="ticker-text">
+                🏆 Best School Award 2025-2026 — East Champaran District (Bihar) &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+                ✨ Admissions Open for Session 2026-27 — Nursery to Class X &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+                💻 Smart Classrooms & Science Labs Ready &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+                📅 Parent-Teacher Meeting — Saturday, 10:00 AM
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="pill-badge">
+            <i data-lucide="trophy" size="16"></i> Best School Award 2025-2026 · East Champaran
+        </div>
+        <h1>Where Young Minds Grow<br>With Confidence & Discipline</h1>
+        <p>A trusted English Medium school in Raxaul, East Champaran — nurturing future leaders from Nursery to Class X with modern academic excellence and core values.</p>
+        <div class="hero-btns">
+            <a href="#admissions" class="btn-ios-glow" style="padding: 14px 32px; font-size: 1.05rem;">Apply for Admission</a>
+            <a href="#about" style="background: rgba(0,0,0,0.06); color: #1d1d1f; padding: 14px 28px; border-radius: 980px; font-weight: 700; text-decoration: none;">Explore Campus</a>
+        </div>
+    </section>
+
+    <!-- Stats Glass Grid -->
+    <section class="stats-wrapper">
+        <div class="glass-card">
+            <div class="stat-num">10</div>
+            <div class="stat-lbl">Class Levels (Nur → X)</div>
+        </div>
+        <div class="glass-card">
+            <div class="stat-num">2000+</div>
+            <div class="stat-lbl">Happy Students</div>
+        </div>
+        <div class="glass-card">
+            <div class="stat-num">60+</div>
+            <div class="stat-lbl">Expert Teachers</div>
+        </div>
+        <div class="glass-card">
+            <div class="stat-num">100+</div>
+            <div class="stat-lbl">Awards & Honours</div>
+        </div>
+    </section>
+
+    <!-- Interactive Categories Grid -->
+    <section class="sec-head">
+        <span class="sec-tag">Explore S.A.V.</span>
+        <h2 class="sec-title">Neatly Organised Features</h2>
+    </section>
+
+    <div class="cat-grid">
+        <div class="cat-card">
+            <div class="cat-icon-box"><i data-lucide="compass" size="28"></i></div>
+            <h3>About S.A.V.</h3>
+            <p style="color: var(--text-muted); margin-top: 8px;">Managed by Shanti Seva Charitable Trust. Focus on character, discipline and academic growth.</p>
+        </div>
+        <div class="cat-card">
+            <div class="cat-icon-box"><i data-lucide="award" size="28"></i></div>
+            <h3>Best School Award</h3>
+            <p style="color: var(--text-muted); margin-top: 8px;">Honoured as the Best School 2025-2026 in East Champaran District, Bihar.</p>
+        </div>
+        <div class="cat-card">
+            <div class="cat-icon-box"><i data-lucide="book-open" size="28"></i></div>
+            <h3>Smart Academics</h3>
+            <p style="color: var(--text-muted); margin-top: 8px;">Activity-led teaching, interactive visual lessons, and dedicated board preparation.</p>
+        </div>
+    </div>
+
+    <!-- Interactive Classes Section -->
+    <section id="academics" class="classes-container">
+        <div class="sec-head">
+            <span class="sec-tag">Curriculum</span>
+            <h2 class="sec-title">Select Class to Explore</h2>
+        </div>
+
+        <div class="classes-scroll-pills">
+            <button class="class-pill active" onclick="updateClass('Nursery', 'Age 3+ Years', 'Play-way learning, rhymes, motor skills, and foundational social behavior.')">Nursery</button>
+            <button class="class-pill" onclick="updateClass('LKG & UKG', 'Age 4-5 Years', 'Phonics, basic numbers, creative drawing, and confidence building.')">LKG & UKG</button>
+            <button class="class-pill" onclick="updateClass('Class I - V', 'Primary Level', 'English, Math, EVS, Hindi, Art & Craft with interactive smart board classes.')">Class I - V</button>
+            <button class="class-pill" onclick="updateClass('Class VI - VIII', 'Middle School', 'Science practicals, Social Studies, Computer Science, and logical reasoning.')">Class VI - VIII</button>
+            <button class="class-pill" onclick="updateClass('Class IX & X', 'Secondary Level', 'CBSE/BSEB pattern board preparation, intensive mentorship, and lab experiments.')">Class IX - X</button>
+        </div>
+
+        <div class="glass-card" id="class-detail-box" style="text-align: left; padding: 40px;">
+            <span style="color: var(--primary); font-weight: 800; text-transform: uppercase;" id="class-tag">Age 3+ Years</span>
+            <h3 style="font-size: 2rem; font-weight: 800; margin: 8px 0;" id="class-title">Nursery Section</h3>
+            <p style="font-size: 1.1rem; color: var(--text-muted);" id="class-desc">Play-way learning, rhymes, motor skills, and foundational social behavior.</p>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" style="max-width: 1240px; margin: 0 auto 120px; padding: 0 24px;">
+        <div class="sec-head">
+            <span class="sec-tag">Leadership</span>
+            <h2 class="sec-title">Guided by Excellence</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <div class="glass-card" style="text-align: left;">
+                <h3 style="font-size: 1.4rem;">Victor Deka</h3>
+                <p style="color: var(--primary); font-weight: 700;">Principal, S.A.V. Raxaul</p>
+                <p style="color: var(--text-muted); margin-top: 12px; font-style: italic;">“Welcome to S.A.V. Our goal is to build confident learners with strong moral values.”</p>
+            </div>
+            <div class="glass-card" style="text-align: left;">
+                <h3 style="font-size: 1.4rem;">Er. Kundan Raj</h3>
+                <p style="color: var(--primary); font-weight: 700;">Vice Principal, S.A.V. Raxaul</p>
+                <p style="color: var(--text-muted); margin-top: 12px; font-style: italic;">“Education is about character building and preparing students for future success.”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Form & Contact -->
+    <section id="admissions" class="contact-grid">
+        <div>
+            <span class="sec-tag">Admissions 2026-27</span>
+            <h2 class="sec-title" style="text-align: left;">Apply for Your Child's Future</h2>
+            <p style="color: var(--text-muted); margin-top: 12px; font-size: 1.1rem;">
+                Visit our campus at Main Road, Laxmipur, Raxaul or submit an enquiry form to schedule a friendly student interaction.
+            </p>
+            <div style="margin-top: 30px;">
+                <p style="font-weight: 700; margin-bottom: 6px;"><i data-lucide="phone" size="18"></i> Phone: +91 94306 82924, +91 87895 70326</p>
+                <p style="font-weight: 700;"><i data-lucide="mail" size="18"></i> Email: shantiniketanadarshvidyalaya@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="form-glass">
+            <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Quick Enquiry Form</h3>
+            <form onsubmit="event.preventDefault(); alert('Enquiry Sent! The admission desk will contact you soon.');">
+                <label style="font-weight: 700; font-size: 0.9rem;">Student Name</label>
+                <input type="text" class="input-ios" placeholder="Enter full name" required>
+
+                <label style="font-weight: 700; font-size: 0.9rem;">Parent Phone Number</label>
+                <input type="tel" class="input-ios" placeholder="+91 00000 00000" required>
+
+                <label style="font-weight: 700; font-size: 0.9rem;">Applying For</label>
+                <select class="input-ios">
+                    <option>Nursery / LKG / UKG</option>
+                    <option>Class I - V</option>
+                    <option>Class VI - X</option>
+                </select>
+
+                <button type="submit" class="btn-ios-glow" style="width: 100%; justify-content: center; border: none; padding: 14px; cursor: pointer;">Submit Admission Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h2>Shantiniketan Adarsh Vidyalaya</h2>
+                <p style="color: #86868b; margin-top: 12px;">Managed by Shanti Seva Charitable Trust. Quality English Medium Education in Raxaul, Bihar.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 12px;">Quick Links</h4>
+                <p><a href="#about" style="color: #86868b; text-decoration: none;">About Us</a></p>
+                <p><a href="#academics" style="color: #86868b; text-decoration: none;">Academics</a></p>
+                <p><a href="#admissions" style="color: #86868b; text-decoration: none;">Admissions</a></p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 12px;">Office Hours</h4>
+                <p style="color: #86868b;">Monday – Saturday<br>8:00 AM – 2:00 PM</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 12px;">Address</h4>
+                <p style="color: #86868b;">Main Road, Laxmipur, Raxaul - 845305, East Champaran, Bihar</p>
+            </div>
+        </div>
+        <div style="text-align: center; color: #86868b; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            © 2026 Shantiniketan Adarsh Vidyalaya (S.A.V.). All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function updateClass(title, tag, desc) {
+            document.getElementById('class-title').innerText = title;
+            document.getElementById('class-tag').innerText = tag;
+            document.getElementById('class-desc').innerText = desc;
+
+            const buttons = document.querySelectorAll('.class-pill');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
